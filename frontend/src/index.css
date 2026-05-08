@@ -71,6 +71,218 @@ header p {
   font-variant-numeric: tabular-nums;
 }
 
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── 钱包 ───────────────────────────────────────── */
+
+.wallet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+}
+
+.wallet-addr {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  color: var(--text);
+}
+
+.wallet-chain {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: white;
+  font-weight: 500;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.btn-secondary:hover {
+  border-color: var(--muted);
+}
+
+/* ── 奖池统计 ───────────────────────────────────── */
+
+.pool-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.user-stats {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.user-stats-active {
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+}
+
+/* ── 下注面板 ───────────────────────────────────── */
+
+.bet-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.bet-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bet-team {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.bet-team img {
+  width: 40px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.bet-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.bet-input input {
+  width: 110px;
+  padding: 0.5rem 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.bet-input input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.bet-range {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.bet-error,
+.bet-success,
+.bet-hint {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  word-break: break-word;
+}
+
+.bet-error {
+  background: rgba(248, 81, 73, 0.1);
+  color: #ff7b72;
+  border: 1px solid rgba(248, 81, 73, 0.3);
+}
+
+.bet-success {
+  background: rgba(35, 134, 54, 0.15);
+  color: #3fb950;
+  border: 1px solid rgba(35, 134, 54, 0.4);
+}
+
+.bet-hint {
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  font-family: inherit;
+}
+
 .confederation {
   margin-bottom: 2.5rem;
 }
