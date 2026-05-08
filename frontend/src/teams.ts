@@ -2,6 +2,14 @@
 // id: 1..48 与链上合约 GuessChampion.sol 的 teamId 一一对应（0 为哨兵值）
 // code: ISO 3166-1 alpha-2 小写，用于拼接 https://flagcdn.com/w80/{code}.png
 //       英格兰、苏格兰使用 ISO 3166-2 子区代码 gb-eng / gb-sct
+//
+// ⚠ Single Source of Truth: ../../data/teams.json
+//    本文件内容必须与 data/teams.json 字段值完全一致。
+//    合约 GuessChampion.TEAMS_HASH = keccak256(data/teams.json 原始字节)，
+//    任何 PR 修改本文件时必须同步更新 data/teams.json，
+//    否则 forge test 中的 test_TeamsHash_matchesJsonFile 会 RED。
+// TODO(frontend-web3): 接入 viem/wagmi 后，启动时 fetch data/teams.json、
+//    计算 keccak256、和 contract.TEAMS_HASH() 比对，不一致拒绝渲染
 export type Confederation =
   | "CAF"
   | "CONMEBOL"

@@ -5,6 +5,14 @@ contract GuessChampion {
     // 2026 FIFA World Cup 共 48 支参赛队，有效编号 1..48
     uint8 public constant TEAM_COUNT = 48;
 
+    /// @notice keccak256(data/teams.json 原始字节) — 链上承诺的 teamId↔国家 映射指纹
+    /// @dev    官方映射定义在仓库 data/teams.json，本常量是其内容的密码学指纹。
+    ///         任何前端/索引器使用前应：fetch 该 JSON → 计算 keccak256 → 比对本常量。
+    ///         不一致即视为映射被篡改，应拒绝交互。
+    ///         重新计算指纹：forge script script/HashTeams.s.sol
+    bytes32 public constant TEAMS_HASH =
+        0x8ccca76bebb51a66704e72959299c5db802e3a20fc186333c52fee50788fbca9;
+
     // 每笔下注金额必须落在 [MIN_BET, MAX_BET] 区间内
     uint256 public constant MIN_BET = 0.01 ether;
     uint256 public constant MAX_BET = 1 ether;

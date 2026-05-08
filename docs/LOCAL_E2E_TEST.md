@@ -173,6 +173,15 @@ cast call $GC "MAX_BET()(uint256)"        --rpc-url $RPC   # 1000000000000000000
 cast call $GC "BET_DEADLINE()(uint64)"    --rpc-url $RPC   # 1781136000
 cast call $GC "drawn()(bool)"             --rpc-url $RPC   # false
 cast call $GC "totalPool()(uint256)"      --rpc-url $RPC   # 0
+
+# 5.1 验证 teams 映射指纹（链上承诺的 keccak256(data/teams.json)）
+cast call $GC "TEAMS_HASH()(bytes32)"     --rpc-url $RPC
+# 期望：0x8ccca76bebb51a66704e72959299c5db802e3a20fc186333c52fee50788fbca9
+
+# 重新计算本地 data/teams.json 的指纹做比对：
+forge script script/HashTeams.s.sol
+# 输出末尾的 keccak256 值应与上面的链上 TEAMS_HASH 完全一致；
+# 不一致 → 仓库 JSON 已被改动且未同步合约常量，前端/索引器应拒绝交互
 ```
 
 ---

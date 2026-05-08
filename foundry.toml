@@ -4,4 +4,7 @@ out = "out"
 libs = ["lib"]
 solc_version = "0.8.28"
 
+# Allow scripts/tests to read repo data files (e.g. data/teams.json)
+fs_permissions = [{ access = "read", path = "./data" }]
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

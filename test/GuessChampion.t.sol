@@ -45,6 +45,19 @@ contract GuessChampionTest is Test {
         assertEq(gc.champion(), 0);
     }
 
+    /// @notice 防漂移：合约里硬编码的 TEAMS_HASH 必须等于仓库里 data/teams.json 的实际 keccak256
+    /// @dev    如果有人改了 teams.json 但没更新合约常量（或反之），这里立刻 RED
+    ///         重算指纹：forge script script/HashTeams.s.sol
+    function test_TeamsHash_matchesJsonFile() public view {
+        bytes memory raw = vm.readFileBinary("data/teams.json");
+        bytes32 actual = keccak256(raw);
+        assertEq(
+            actual,
+            gc.TEAMS_HASH(),
+            "data/teams.json drifted from GuessChampion.TEAMS_HASH"
+        );
+    }
+
     // ════════════════════════════════════════════════════════
     // bet()
     // ════════════════════════════════════════════════════════
